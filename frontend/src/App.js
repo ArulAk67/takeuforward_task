@@ -40,7 +40,7 @@ function CodeEditor() {
             <label className=' text-white font-bold italic '>Programming Language :</label>
           <div className='input'>
             <input
-              className='w-full'
+              className='w-full text-black'
               type="text"
               placeholder="Language"
               value={language_id}
@@ -50,7 +50,7 @@ function CodeEditor() {
             <label className=' text-white font-bold italic '>Enter the Code</label>
           <div className='input'>
             <textarea
-              className='h-64 w-full'
+              className='h-64 w-full text-black'
               placeholder="Code"
               value={source_code}
               onChange={(e) => setCode(e.target.value)}
@@ -59,7 +59,7 @@ function CodeEditor() {
             <label className=' text-white font-bold italic '>Sample Input</label>
           <div className='input'>
             <textarea
-              className='w-full'
+              className='w-full text-black'
               placeholder="Sample Input"
               value={stdin}
               onChange={(e) => setInput(e.target.value)}

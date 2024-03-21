@@ -55,7 +55,7 @@ export const getCode = async(req,res)=>{
 }
 
 export const getEntry =(req,res)=>{
-    const q='select * from codes';
+    const q='select language,code,input,output from codes';
 
     db.query(q,(err,data)=>{
         if (err) return res.status(500).json(err);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function CodeEditor() {
   const [language_id, setLanguage] = useState('');
@@ -66,14 +67,23 @@ function CodeEditor() {
               ></textarea>
           </div>
           <div className='button'>
-            <button onClick={compileCode} className='btn'>Compile</button>
-            <button onClick={runCode} className='btn'>Run</button>
+            <button onClick={compileCode} className='btn hover:bg-gradient-to-br from-cyan-100 to-cyan-300 shadow-sm
+           shadow-slate-100 italic font-medium hover:text-black'>Get Token</button>
+            <button onClick={runCode} className='btn hover:bg-gradient-to-br from-cyan-100 to-cyan-300 shadow-sm
+           shadow-slate-100 italic font-medium hover:text-black'>Run</button>
           </div>
         </div>
-        <div className='w-1/2 h-3/4 border  py-5 px-5 border-solid rounded-3xl border-white mx-12'>
-          <div className=' rounded-lg text-white'>
-            <h3 className=' underline italic text-2xl'>Output:</h3>
-            <pre className=' text-green-400 my-5'>{output}</pre>
+        <div className='w-1/2 py-5 px-5 mx-12 flex flex-col h-3/4 my-3 gap-4'>
+          <div className=' text-white border border-solid rounded-2xl h-3/4 border-white shadow-lg shadow-slate-200'>
+            <h3 className=' underline italic text-2xl mx-5 my-3'>Output:</h3>
+            <pre className=' text-cyan-300 my-5 mx-5 font-sans'>{output}</pre>
+          </div>
+          <div className='text-white my-16'>
+          <Link to="/tables" className=' border border-solid border-white px-5 py-5 text-center 
+          rounded-xl hover:bg-gradient-to-br from-cyan-100 to-cyan-300 shadow-sm
+           shadow-slate-100 italic font-medium hover:text-black'>
+              View Previous Entries!
+            </Link>
           </div>
         </div>
     </div>

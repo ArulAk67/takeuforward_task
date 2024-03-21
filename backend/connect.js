@@ -2,10 +2,10 @@ import mysql from "mysql";
 import "dotenv/config"
 
 export const db=mysql.createConnection({
-    host:process.env.HOST,
-    user:process.env.USER,
-    password:process.env.PASSWORD,
-    database:process.env.DATABASE,
+    host:"sql5.freesqldatabase.com",
+    user:"sql5693049",
+    password:"1E8RfHPrxb",
+    database:"sql5693049",
     port:3306
 })
 

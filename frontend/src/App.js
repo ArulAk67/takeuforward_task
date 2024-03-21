@@ -12,7 +12,7 @@ function CodeEditor() {
 
   const compileCode = async () => {
     try {
-      const response = await axios.post('http://localhost:5500/ide/post', {
+      const response = await axios.post('https://takeuforward-backend.vercel.app/ide/post', {
         language_id,
         source_code,
         stdin,
@@ -26,7 +26,7 @@ function CodeEditor() {
 
   const runCode = async () => {
     try {
-      const response = await axios.get(`http://localhost:5500/ide/get/${token}`);
+      const response = await axios.get(`https://takeuforward-backend.vercel.app/ide/get/${token}`);
       console.log(response);
       setOutput(`Output: ${response.data}`);
     } catch (error) {

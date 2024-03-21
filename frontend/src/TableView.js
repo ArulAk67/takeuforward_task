@@ -7,7 +7,7 @@ function TableView() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5500/ide/entries');
+        const response = await axios.get('https://takeuforward-backend.vercel.app/ide/entries');
         const modifiedData = response.data.map(item => ({
           ...item,
           code: item.code.substring(0, 100) 

@@ -8,7 +8,7 @@ import router from "./router/dbRouter.js";
 // const axios = require('axios');
 
 app.use(express.json());
-app.use(cors({origin:"http://localhost:3000"}))
+app.use(cors())
 app.use("/ide",router);
 
 

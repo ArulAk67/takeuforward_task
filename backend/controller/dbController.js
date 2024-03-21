@@ -32,19 +32,30 @@ export const getCode = async(req,res)=>{
 
         const q="INSERT INTO codes(`language`,`code`,`input`,`output`) VALUES (?) ";
 
+
+        const sourceCode = response.data.source_code ? Buffer.from(response.data.source_code, 'base64').toString('utf8') : '';
+        const stdin = response.data.stdin ? Buffer.from(response.data.stdin, 'base64').toString('utf8') : null;
+        const stdout = response.data.stdout ? Buffer.from(response.data.stdout, 'base64').toString('utf8') : null;
+
         const values=[
             response.data.language.name,
-            Buffer.from(response.data.source_code, 'base64').toString('utf8'),
-            Buffer.from(response.data.stdin, 'base64').toString('utf8'),
-            Buffer.from(response.data.stdout, 'base64').toString('utf8')
+            sourceCode,
+            stdin,
+            stdout
         ]
         
         console.log(values);
+        
+        if(stdout){
 
-        db.query(q,[values],(err,data)=>{
-            if(err) return res.status(500).json(err);
-            return res.status(200).json(Buffer.from(response.data.stdout, 'base64').toString('utf8'));
-          });
+            db.query(q,[values],(err,data)=>{
+                if(err) return res.status(500).json(err);
+                return res.status(200).json(stdout);
+              });
+        }
+        else{
+            return res.json(Buffer.from(response.data.compile_output, 'base64').toString('utf8') );
+        }
 
         // return res.status(200).json(response.data);
     } catch (error) {

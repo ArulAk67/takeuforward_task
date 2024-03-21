@@ -22,7 +22,7 @@ function TableView() {
   }, []);
   // console.log(tableData);
   return (
-    <div className="mx-auto p-4 w-full bg-black text-emerald-500 min-h-screen flex flex-col items-center">
+    <div className="mx-auto p-4 w-full bg-black text-cyan-300 min-h-screen flex flex-col items-center">
       <div>
       <h2 className="font-bold mb-4 text-center italic text-3xl">Table View</h2>
       </div>

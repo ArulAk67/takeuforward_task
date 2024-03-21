@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function CodeEditor() {
-  const [language_id, setLanguage] = useState('');
+  const [language_id, setLanguage_id] = useState(null);
+  const [language, setLanguage] = useState("");
   const [source_code, setCode] = useState('');
   const [stdin, setInput] = useState('');
   const [output, setOutput] = useState('THE OUTPUT WILL BE DISPLAYED HERE!');
@@ -17,7 +18,7 @@ function CodeEditor() {
         stdin,
       });
       setToken(response.data.token);
-      setOutput(`Compilation successful. Token received: ${response.data.token}`);
+      setOutput(`Token received: ${response.data.token}`);
     } catch (error) {
       setOutput(`Error during compilation: ${error.message}`);
     }
@@ -33,6 +34,20 @@ function CodeEditor() {
     }
   };
 
+  const handleLanguageChange = (e) => {
+    const languageIds = {
+      "Java": 91,
+      "JavaScript": 93,
+      "C": 50,
+      "C++": 53,
+      "Python": 71,
+    };  
+    // setLanguage(languageIds[e.target.value]);
+    setLanguage(e.target.value);
+    setLanguage_id(languageIds[e.target.value]);
+    // console.log(language_id);~
+  };
+
   return (
     <>
      <div className='flex items-center justify-center text-xl h-screen bg-black font-medium w-full'>
@@ -40,13 +55,17 @@ function CodeEditor() {
           <h1 className='text-3xl italic text-white my-5 underline'>Code Editor</h1>
             <label className=' text-white font-bold italic '>Programming Language :</label>
           <div className='input'>
-            <input
+            <select
               className='w-full text-black'
-              type="text"
-              placeholder="Language"
-              value={language_id}
-              onChange={(e) => setLanguage(e.target.value)}
-              />
+              value={language}
+              onChange={handleLanguageChange}>
+              <option value="">Select Language</option>
+              <option value="Java">Java</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Python">Python</option>
+              <option value="C">C</option>
+              <option value="C++">C++</option>
+            </select>
           </div>
             <label className=' text-white font-bold italic '>Enter the Code</label>
           <div className='input'>

@@ -46,18 +46,18 @@ export const getCode = async(req,res)=>{
         
         console.log(values);
         
-        if(stdout){
+        // if(stdout){
 
-            db.query(q,[values],(err,data)=>{
-                if(err) return res.status(500).json(err);
-                return res.status(200).json(stdout);
-              });
-        }
-        else{
-            return res.json(Buffer.from(response.data.compile_output, 'base64').toString('utf8') );
-        }
+        //     db.query(q,[values],(err,data)=>{
+        //         if(err) return res.status(500).json(err);
+        //         return res.status(200).json(stdout);
+        //       });
+        // }
+        // else{
+        //     return res.json(Buffer.from(response.data.compile_output, 'base64').toString('utf8') );
+        // }
 
-        // return res.status(200).json(response.data);
+        return res.status(200).json(stdout);
     } catch (error) {
         console.error(error);
         return res.status(403).json(error);
